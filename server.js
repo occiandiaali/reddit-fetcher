@@ -278,7 +278,7 @@ const PORT = 3000;
 
 app.use(
   cors({
-    origin: ["https://til-daily.puter.site/", "http://127.0.0.1:8080/public/"],
+    origin: ["https://til-daily.puter.site", "http://127.0.0.1:8080/public/"],
   }),
 );
 
@@ -331,7 +331,7 @@ function shuffle(array) {
 // Facts endpoint with pagination
 app.get("/facts", async (req, res) => {
   //res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
-  res.header("Access-Control-Allow-Origin", "https://til-daily.puter.site/");
+  res.header("Access-Control-Allow-Origin", "https://til-daily.puter.site");
   try {
     const now = Date.now();
     if (!cachedFacts.length || now - lastFetchTime > CACHE_DURATION) {
@@ -362,7 +362,7 @@ app.get("/facts", async (req, res) => {
 // Trending endpoint (r/todayilearned only)
 app.get("/trending", async (req, res) => {
   // res.header("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
-  res.header("Access-Control-Allow-Origin", "https://til-daily.puter.site/");
+  res.header("Access-Control-Allow-Origin", "https://til-daily.puter.site");
   try {
     const response = await fetch(
       "https://www.reddit.com/r/todayilearned/top.json?t=week&limit=5",
